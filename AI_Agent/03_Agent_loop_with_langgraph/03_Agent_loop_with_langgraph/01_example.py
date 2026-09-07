@@ -8,8 +8,13 @@ from langgraph.graph import StateGraph, START, END, MessagesState
 from langgraph.prebuilt import ToolNode, tools_condition
 
 load_dotenv()
+# llm = ChatOpenAI(
+#     model=os.getenv("OPENAI_MODEL", "gpt-5-nano"),
+# )
 llm = ChatOpenAI(
     model=os.getenv("OPENAI_MODEL", "gpt-5-nano"),
+    api_key=os.environ["GMS_KEY"],
+    base_url=os.environ["GMS_BASE_URL"],
 )
 
 
@@ -46,7 +51,7 @@ graph = builder.compile()
 # recursion_limit은 도구 호출 횟수가 아닌 그래프 실행 단계 수의 상한이다.
 for state in graph.stream(
     {"messages": [{"role": "user", "content": "3번, 5번, 7번 게시글 제목을 각각 조회해줘"}]},
-    config={"recursion_limit": 4},
+    config={"recursion_limit": 10},
     stream_mode="values",
 ):
     state["messages"][-1].pretty_print()

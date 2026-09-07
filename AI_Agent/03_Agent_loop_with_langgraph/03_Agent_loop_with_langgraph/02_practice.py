@@ -12,8 +12,13 @@ from typing_extensions import TypedDict
 
 
 load_dotenv()
+# llm = ChatOpenAI(
+#     model=os.getenv("OPENAI_MODEL", "gpt-5-nano"),
+# )
 llm = ChatOpenAI(
     model=os.getenv("OPENAI_MODEL", "gpt-5-nano"),
+    api_key=os.environ["GMS_KEY"],
+    base_url=os.environ["GMS_BASE_URL"],
 )
 
 # State 정의
@@ -67,7 +72,7 @@ for query in queries:
     # GraphRecursionError가 발생한다. 이 제한은 도구 오류 처리와 별개다.
     for state in graph.stream(
         {"messages": [{"role": "user", "content": query}]},
-        config={"recursion_limit": 4},
+        config={"recursion_limit": 15},
         stream_mode="values",
     ):
         state["messages"][-1].pretty_print()
