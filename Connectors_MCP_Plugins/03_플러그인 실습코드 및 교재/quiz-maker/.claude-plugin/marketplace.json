@@ -1,0 +1,14 @@
+{
+  "name": "my-quiz-plugins",
+  "owner": {
+    "name": "깃허브-닉네임 작성"
+  },
+  "plugins": [
+    {
+      "name": "quiz-maker",
+      "source": "./",
+      "description": 
+      "학습 자료로 문제지와 정답지를 만드는 플러그인"
+    }
+  ]
+}

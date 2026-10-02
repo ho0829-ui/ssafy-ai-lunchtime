@@ -1,0 +1,9 @@
+{
+  "name": "quiz-maker",
+  "version": "0.1.0",
+  "description": "학습 자료(docx/md/txt)로 객관식·단답형 퀴즈를 만들고, 문제지와 정답지를 분리한 Markdown으로 내보낸다. 모든 정답에 검증된 원문 근거(위치+인용)를 붙인다.",
+  "author": {
+    "name": "제이든"
+  },
+  "keywords": ["quiz", "exam", "education", "퀴즈", "출제"]
+}
